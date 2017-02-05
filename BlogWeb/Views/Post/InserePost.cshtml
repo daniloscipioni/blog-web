@@ -1,0 +1,44 @@
+﻿    @model BlogWeb.ViewModels.PostModel
+
+    @using (Html.BeginForm("Adiciona", "Post", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        
+        @Html.ValidationMessage("post.invalido")
+
+        @Html.ValidationMessageFor(P => P.Titulo)
+        @Html.LabelFor(P => P.Titulo, "Titulo:")
+        @Html.TextBoxFor(P => P.Titulo)
+
+        @Html.ValidationMessageFor(P => P.NomeAutor)
+        @Html.LabelFor(P => P.NomeAutor, "Nome do Autor:")
+        @Html.TextBoxFor(P => P.NomeAutor)
+
+        @Html.ValidationMessageFor(P => P.Conteudo)
+        @Html.LabelFor(P => P.Conteudo, "Conteúdo:")
+        @Html.TextAreaFor(P => P.Conteudo, new { rows = 10 })
+
+        @Html.ValidationMessageFor(P => P.DataPublicacao)
+        @Html.LabelFor(P => P.DataPublicacao, "Data de Publicação:")
+        @Html.TextBoxFor(P => P.DataPublicacao)
+
+        @Html.ValidationMessageFor(P => P.Publicado)
+        @Html.LabelFor(P => P.Publicado, "Publicado:")
+        @Html.CheckBoxFor(P => P.Publicado)
+
+        @Html.LabelFor(P => P.AutorId, "Autor:")
+        @Html.DropDownListFor(P => P.AutorId, new SelectList(ViewBag.Usuarios, "Id", "Nome"), "Sem Autor")
+        @Html.ValidationMessageFor(P => P.AutorId)
+
+        @Html.LabelFor(P => P.Tags, "Tags:")
+        @Html.ListBoxFor(P => P.Tags, new SelectList(ViewBag.ListaTags, "Id", "Nome"))
+        @Html.ValidationMessageFor(P => P.Tags)
+
+        <input type="submit" value="Cadastrar" />
+    }
+
+@section Scripts{
+    <script src="~/Content/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.unobtrusive.js"></script>
+        }

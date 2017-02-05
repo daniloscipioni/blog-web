@@ -1,0 +1,17 @@
+﻿<nav>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "icon-home" })</li>
+        <li>@Html.ActionLink("Posts", "Index", "Post", null , new { @class = "icon-list-alt" })</li>
+        <li>@Html.ActionLink("Usuarios", "Index", "Usuario", null , new { @class = "icon-users" })</li>
+        <li>@Html.ActionLink("Estatisticas", "Estatisticas", "Post", null, new { @class = "icon-exclamation" })</li>
+        <li>@Html.ActionLink("Tags", "Index", "Tag", null, new { @class = "icon-hashtag" })</li>
+        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+           <li>@Html.ActionLink("Logout", "Logout", "Login", null , new { @class = "icon-logout" })</li>
+        }
+        else
+        {
+          <li>@Html.ActionLink("Login", "Index", "Login", null, new { @class = "icon-login" })</li>
+        }
+    </ul>
+</nav>

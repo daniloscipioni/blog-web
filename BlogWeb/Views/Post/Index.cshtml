@@ -1,0 +1,70 @@
+﻿@model IList<BlogWeb.Models.Post>
+
+<!DOCTYPE html>
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+        
+        <table border="0" class="conteudo">
+    <thead>
+        <tr>
+            <th align="center">Id</th>
+            <th align="center">Título</th>
+            <th align="center">Nome Do Autor</th>
+            <th align="center">Data de Publicação</th>
+            <th align="center"></th>
+            <th align="center"></th>
+            <th align="center"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td align="center">@p.Id</td>
+                <td align="center">@p.Titulo</td>
+                <td align="center">@p.NomeAutor</td>
+                <td align="center">@p.DataPublicacao</td>
+                <td align="center">@Html.ActionLink("Remover", "Remove", new { id = p.Id }, new { @class = "icon-cancel" })</td>
+                <td align="center">@Html.ActionLink("Alterar", "Visualiza", new { id = p.Id }, new { @class = "icon-edit-2" })</td>
+                <td align="center" id="publicar@(p.Id)">
+                @if (p.Publicado)
+                {
+                    @: Publicado
+                }
+                else
+                { 
+                    <a href="#" onclick="publicaPost(@p.Id);">Publicar</a>
+                }
+                
+                
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+
+@Html.ActionLink(" ", "InserePost", "Post", null, new { @class = "icon-list-add", title = "Adicionar Post" })
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/Content/Scripts/jquery-1.10.2.js"></script>
+
+    <script type="text/javascript">
+        function publicaPost(postID) {
+            var url = "@Url.Action("Publica", "Post")";
+            $.post(url, { id: postID }, function () {
+                var elemento = $("#publicar" + postID);
+                elemento.html("Publicado");
+                //window.location = "/posts";
+            });
+        }
+
+    </script>
+
+}

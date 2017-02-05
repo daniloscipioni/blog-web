@@ -1,0 +1,24 @@
+﻿@model BlogWeb.ViewModels.LoginModel
+
+@{
+    string ReturnURL = Request.QueryString["ReturnUrl"];
+}
+
+
+@using (Html.BeginForm("Autentica", "Login", new { Url = ReturnURL },FormMethod.Post))
+{
+
+
+    @Html.ValidationMessage("Login.Invalido")
+
+    @Html.ValidationMessageFor(P => P.Login)
+    @Html.LabelFor(P => P.Login, "Login:")
+    @Html.TextBoxFor(P => P.Login)
+
+    @Html.ValidationMessageFor(P => P.Senha)
+    @Html.LabelFor(P => P.Senha, "Senha:")
+    @Html.PasswordFor(P => P.Senha)
+
+    <input type="submit" value="Autenticar" />
+    }
+

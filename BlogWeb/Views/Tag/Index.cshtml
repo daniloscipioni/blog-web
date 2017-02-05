@@ -1,0 +1,32 @@
+﻿@model IList<BlogWeb.Models.Tag>
+
+<!DOCTYPE html>
+
+
+<meta name="viewport" content="width=device-width" />
+<title>Tags</title>
+
+
+<table border="0" class="conteudo">
+    <thead>
+        <tr>
+            <th align="center">Id</th>
+            <th align="center">Tag</th>
+            <th align="center"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td align="center">@t.Id</td>
+                <td align="center">@t.Nome</td>
+                <td align="center">@Html.ActionLink("Remover", "Remove", new { id = t.Id }, new { @class = "icon-cancel" })</td>
+                
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@Html.ActionLink(" ", "InsereTag", "Tag", null, new { @class = "icon-list-add", title = "Adicionar Tag" })

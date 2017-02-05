@@ -1,0 +1,37 @@
+﻿@model IList<BlogWeb.Models.Usuario>
+
+<!DOCTYPE html>
+
+
+<meta name="viewport" content="width=device-width" />
+<title>Index</title>
+
+
+<table border="0" class="conteudo">
+    <thead>
+        <tr>
+            <th align="center">Id</th>
+            <th align="center">Nome</th>
+            <th align="center">Login</th>
+            <th align="center">Email</th>
+            <th align="center"></th>
+            <th align="center"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td align="center">@u.Id</td>
+                <td align="center">@u.Nome</td>
+                <td align="center">@u.Login</td>
+                <td align="center">@u.Email</td>
+                <td align="center">@Html.ActionLink("Remover", "Remove", new { id = u.Id }, new { @class = "icon-cancel" })</td>
+                <td align="center">@Html.ActionLink("Alterar", "visualiza", new { id = u.Id }, new { @class = "icon-edit-2" })</td>
+            </tr>
+        }
+    </tbody>
+    
+</table>
+
+@Html.ActionLink(" ", "Form", "Usuario", null, new { @class = "icon-user-plus", title = "Adicionar Usuário" })

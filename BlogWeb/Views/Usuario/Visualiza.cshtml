@@ -1,0 +1,29 @@
+﻿@model BlogWeb.Models.Usuario
+<!DOCTYPE html>
+
+<meta name="viewport" content="width=device-width" />
+<title>Visualiza</title>
+
+
+@using (Html.BeginForm("Altera", "Usuario", FormMethod.Post))
+{
+    @Html.HiddenFor(U => U.Id)
+
+    @Html.ValidationMessageFor(u => u.Nome)
+    @Html.LabelFor(u => u.Nome, "Nome:")
+    @Html.TextBoxFor(u => u.Nome)
+
+    @Html.ValidationMessageFor(u => u.Login)
+    @Html.LabelFor(u => u.Login, "Login:")
+    @Html.TextBoxFor(u => u.Login)
+
+    @Html.ValidationMessageFor(u => u.Password)
+    @Html.LabelFor(u => u.Password, "Password:")
+    @Html.PasswordFor(u => u.Password)
+
+    @Html.ValidationMessageFor(u => u.Email)
+    @Html.LabelFor(u => u.Email, "Email:")
+    @Html.TextBoxFor(u => u.Email)
+    
+    <input type="submit" value="Alterar" />
+}

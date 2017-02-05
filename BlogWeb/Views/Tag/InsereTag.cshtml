@@ -1,0 +1,17 @@
+﻿@model BlogWeb.Models.Tag
+
+@using (Html.BeginForm("Adiciona", "Tag", FormMethod.Post))
+{
+
+    @Html.LabelFor(T => T.Nome, "Nome da Tag:")
+    @Html.TextBoxFor(T => T.Nome)
+
+   
+    <input type="submit" value="Cadastrar" />
+}
+
+@section Scripts{
+    <script src="~/Content/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.unobtrusive.js"></script>
+}

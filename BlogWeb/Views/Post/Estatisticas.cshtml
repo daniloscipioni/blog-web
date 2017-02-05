@@ -1,0 +1,50 @@
+﻿@model IList<BlogWeb.Models.PostsPorMes>
+@{
+    var mes = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Estatisticas</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th width="60">Mes</th>
+                <th width="200">Ano</th>
+                <th width="30">Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                switch (p.Mes)
+                {
+                    case 1: mes = "Janeiro"; break;
+                    case 2: mes = "Fevereiro"; break;
+                    case 3: mes = "Março"; break;
+                    case 4: mes = "Abril"; break;
+                    case 5: mes = "Maio"; break;
+                    case 6: mes = "Junho"; break;
+                    case 7: mes = "Julho"; break;
+                    case 8: mes = "Agosto"; break;
+                    case 9: mes = "Setembro"; break;
+                    case 10: mes = "Outubro"; break;
+                    case 11: mes = "Novembro"; break;
+                    case 12: mes = "Dezembro"; break;
+                }
+                <tr>
+                    <td align="center">@mes</td>
+                    <td align="center">@p.Ano</td>
+                    <td align="center">@p.Quantidade</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</body>
+</html>
